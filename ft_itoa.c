@@ -6,7 +6,7 @@
 /*   By: glorza-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:32:48 by glorza-p          #+#    #+#             */
-/*   Updated: 2025/02/06 17:50:27 by glorza-p         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:53:42 by glorza-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 	i = length(&n, &sign);
 	num = malloc((i + sign + 1) * sizeof(char));
 	if (!num)
-		return ('\0');
+		return (NULL);
 	num[--i + sign] = '\0';
 	while (n > 0)
 	{

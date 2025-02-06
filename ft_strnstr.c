@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glorza-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 02:45:34 by glorza-p          #+#    #+#             */
-/*   Updated: 2025/01/28 13:08:12 by glorza-p         ###   ########.fr       */
+/*   Created: 2025/01/20 11:34:37 by glorza-p          #+#    #+#             */
+/*   Updated: 2025/01/27 16:46:09 by glorza-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int	ft_isalpha(unsigned int c)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1024);
-	return (0);
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	while (*(big + i) && i + j < len && *(little + j))
+	{
+		if (*(big + i + j) == *(little + j))
+			j++;
+		else if (j > 0)
+		{
+			j = 0;
+			i++;
+		}
+		else
+			i++;
+	}
+	if ((size_t)j == ft_strlen(little))
+		return ((char *)big + i);
+	return (NULL);
 }
